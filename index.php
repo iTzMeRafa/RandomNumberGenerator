@@ -1,8 +1,26 @@
+<?php
+	if (isset($_GET['submit'])) {
+
+		if (empty($_GET['min']) && empty($_GET['max'])) { 
+			echo "<br /> <br /> <img src='error.png' width='30xpx'> <strong> please enter some values to generate with. </strong> ";
+
+		} else if (!is_numeric($_GET['min']) || !is_numeric($_GET['max'])) {
+		  	echo "<br /> <br /> <img src='error.png' width='30xpx'> <strong> only numbers are allowed. </strong>";
+		}
+
+		else if (!empty($_GET['min']) && !empty($_GET['max'])) {
+
+			$min = $_GET['min'];
+			$max = $_GET['max'];
+			$random = rand($min, $max);
+			echo "<h1> <br /> <br /> <div class='result'>" . $random . "</div></h1>";
+		}
+	}
+?>
+
 <html>
 <head>
 	<title> Random Number Generator </title>
-</head>
-<body>
 	<style>
 		body {
 			background-color: black;
@@ -12,8 +30,8 @@
 			position: fixed;
   			top: 50%;
   			left: 50%;
-		    margin-top: -200px;
-		    margin-left: -200px;
+  			margin-top: -200px;
+  			margin-left: -200px;
 		}
 
 		p  {
@@ -61,51 +79,24 @@
 			-moz-transition-duration: .2s;
 		}
 	</style>
+</head>
+<body>
+	<h1> Random Number Generator </h1> 
 
-<h1> Random Number Generator </h1> 
-
-<form action="index.php" method="GET">
-
-<table width="100%">
-	<tr>
-		<td> <p> Minimum: </p> </td>
-		<td> <input type="text" name="min" maxlength="20" value="<?php echo isset($_GET['min']) ? $_GET['min'] : '' ?>" /> </td>
-
-	</tr>
-	<tr>
-		<td> <p> Maximum: </p> </td>
-		<td> <input type="text" name="max" maxlength="20" value="<?php echo isset($_GET['max']) ? $_GET['max'] : '' ?>" /> </td>
-	</tr>
-</table>
-
-<br />
-<input type="submit" name="submit">
-
-</form>
-
-
-
-<?php
-if (isset($_GET['submit'])) {
-
-	if (empty($_GET['min']) && empty($_GET['max'])) { 
-		echo "<br /> <br /> <img src='error.png' width='30xpx'> <strong> please enter some values to generate with. </strong> ";
-
-	} else if (!is_numeric($_GET['min']) || !is_numeric($_GET['max'])) {
-	  	echo "<br /> <br /> <img src='error.png' width='30xpx'> <strong> only numbers are allowed. </strong>";
-	}
-
-	else if (!empty($_GET['min']) && !empty($_GET['max'])) {
-
-		$min = $_GET['min'];
-		$max = $_GET['max'];
-		$random = rand($min, $max);
-
-		echo "<h1> <br /> <br /> <div class='result'>" . $random . "</div></h1>";
-	}
-}
-?>
-
+	<form action="index.php" method="GET">
+		<table width="100%">
+			<tr>
+				<td> <p> Minimum: </p> </td>
+				<td> <input type="text" name="min" maxlength="20" value="<?php echo isset($_GET['min']) ? $_GET['min'] : '' ?>" /> </td>
+			</tr>
+			<tr>
+				<td> <p> Maximum: </p> </td>
+				<td> <input type="text" name="max" maxlength="20" value="<?php echo isset($_GET['max']) ? $_GET['max'] : '' ?>" /> </td>
+			</tr>
+		</table>
+		<br />
+		<input type="submit" name="submit">
+	</form>
 </body>
 </html>
 
