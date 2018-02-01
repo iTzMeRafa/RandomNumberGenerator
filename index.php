@@ -60,11 +60,9 @@
 			-webkit-transition-duration: .2s;
 			-moz-transition-duration: .2s;
 		}
-
 	</style>
 
 <h1> Random Number Generator </h1> 
-	<br /> <br />
 
 <form action="index.php" method="GET">
 
@@ -81,7 +79,7 @@
 </table>
 
 <br />
-<input type="submit" value="generate" name="submit">
+<input type="submit" name="submit">
 
 </form>
 
